@@ -11,8 +11,54 @@ import {
   deleteContactError,
 } from "./contacts-actions";
 
-axios.defaults.baseURL = "http://localhost:6060";
+axios.defaults.baseURL = "http://localhost:3000";
 
+// const fetchContacts = () => async dispatch => {
+//   dispatch(fetchContactsRequest());
+
+//   try {
+//     const { data } = await axios.get('/contacts');
+//     dispatch(fetchContactsSuccess(data));
+
+//     return data;
+//   } catch (error) {
+//     dispatch(fetchContactsError(error.message));
+//   }
+// };
+
+// const addContact = (name, number) => async dispatch => {
+//   const contact = { name, number };
+//   dispatch(addContactRequest());
+
+//   try {
+//     const { data } = await axios.post('/contacts', contact);
+//     dispatch(addContactSuccess(data));
+
+//     return data;
+//   } catch (error) {
+//     dispatch(addContactError(error.message));
+//   }
+// };
+
+// const deleteContact = contactId => async dispatch => {
+//   dispatch(deleteContactRequest());
+
+//   try {
+//     const { data } = await axios.delete(`/contacts/${contactId}`);
+//     dispatch(deleteContactSuccess(contactId));
+
+//     return data;
+//   } catch (error) {
+//     dispatch(deleteContactError(error.message));
+//   }
+// };
+
+// /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+// export default {
+//   fetchContacts,
+//   addContact,
+//   deleteContact,
+// };
 export const fetchContacts = () => (dispatch) => {
   dispatch(fetchContactsRequest());
 

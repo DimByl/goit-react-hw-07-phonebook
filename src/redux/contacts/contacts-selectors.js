@@ -15,3 +15,7 @@ export const getContactsToShow = createSelector(
     );
   }
 );
+export const getAdded = createSelector([getContacts], (contacts) => {
+  const Added = (name) => contacts.map(({ name }) => name).includes(name);
+  return Added;
+});

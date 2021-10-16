@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import PhoneInput from "react-phone-number-input";
 
-import { contactsOperations, getContacts } from "redux/contacts";
-
+import { contactsOperations } from "redux/contacts";
+import { getContacts } from "redux/contacts";
 import styles from "./ContactForm.module.scss";
 import "react-phone-number-input/style.css";
 
