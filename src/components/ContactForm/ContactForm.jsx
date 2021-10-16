@@ -1,35 +1,34 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from "react-phone-number-input";
 
-import * as contactsActions from '../../redux/contacts/contacts-actions';
-import { getContacts } from '../../redux/contacts/contacts-selectors';
+import { contactsOperations, getContacts } from "redux/contacts";
 
-import styles from './ContactForm.module.scss';
-import 'react-phone-number-input/style.css';
+import styles from "./ContactForm.module.scss";
+import "react-phone-number-input/style.css";
 
 const ContactForm = () => {
-  const [contactName, setContactName] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
+  const [contactName, setContactName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
 
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.currentTarget;
-    if (name === 'name') {
+    if (name === "name") {
       setContactName(value);
     }
   };
 
-  const handleFormSubmit = event => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const checkSameName = contacts.find(({ name }) => name === contactName);
 
     const checkSameNumber = contacts.find(
-      ({ number }) => number === contactNumber,
+      ({ number }) => number === contactNumber
     );
 
     if (checkSameNumber) {
@@ -43,13 +42,13 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(contactsActions.addNewContact(contactName, contactNumber));
+    dispatch(contactsOperations.addContact(contactName, contactNumber));
     reset();
   };
 
   const reset = () => {
-    setContactName('');
-    setContactNumber('');
+    setContactName("");
+    setContactNumber("");
   };
 
   return (

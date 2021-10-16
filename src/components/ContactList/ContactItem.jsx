@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { useDispatch } from 'react-redux';
-import * as contactsActions from '../../redux/contacts/contacts-actions';
+import { useDispatch } from "react-redux";
+import { contactsOperations } from "redux/contacts";
 
 import styles from "./ContactList.module.scss";
 
@@ -8,7 +8,7 @@ const ContactItem = ({ contact }) => {
   const { id, name, number } = contact;
 
   const dispatch = useDispatch();
-  const onDeleteContact = () => dispatch(contactsActions.deleteContact(id));
+  const onDeleteContact = () => dispatch(contactsOperations.deleteContact(id));
 
   return (
     <li className={styles.ContactItem}>
@@ -31,7 +31,7 @@ const ContactItem = ({ contact }) => {
 
 ContactItem.propTypes = {
   contact: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }).isRequired,

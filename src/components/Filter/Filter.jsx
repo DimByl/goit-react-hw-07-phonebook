@@ -1,16 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from '../../redux/contacts/contacts-selectors';
-import * as contactsActions from '../../redux/contacts/contacts-actions';
+import { useSelector, useDispatch } from "react-redux";
+import { getFilter } from "redux/contacts";
+import * as contactsActions from "redux/contacts";
 import styles from "./Filter.module.scss";
 
 const Filter = () => {
-
   const filter = useSelector(getFilter);
 
   const dispatch = useDispatch();
-  const onChangeFilter = e =>
+  const onChangeFilter = (e) =>
     dispatch(contactsActions.changeFilter(e.currentTarget.value));
-  
+
   return (
     <label className={styles.filterLabel}>
       <span className={styles.filterText}>Find contacts by name</span>
