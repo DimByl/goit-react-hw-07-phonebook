@@ -1,17 +1,15 @@
 import { useSelector } from "react-redux";
-import {
-  getContacts,
-  getContactsToShow,
-} from "redux/contacts/contacts-selectors";
-import Notification from "components/Notification/Notification";
+import { contactsSelectors } from "redux/contacts";
 import ContactItem from "./ContactItem";
 import styles from "./ContactList.module.scss";
 
 const ContactList = () => {
-  const allContacts = useSelector(getContacts);
-  const contacts = useSelector(getContactsToShow);
+  const allContacts = useSelector(contactsSelectors.getContacts);
+  const contacts = useSelector(contactsSelectors.getContactsToShow);
 
   return allContacts.length === 0 ? (
+    <p className={styles.notification}>Contact book is empty</p>
+  ) : (
     <ul className={styles.ContactList}>
       {contacts.map((contact) => {
         const { id } = contact;
@@ -19,8 +17,6 @@ const ContactList = () => {
         return <ContactItem key={id} contact={contact} />;
       })}
     </ul>
-  ) : (
-    <Notification message="Contact book is empty" />
   );
 };
 

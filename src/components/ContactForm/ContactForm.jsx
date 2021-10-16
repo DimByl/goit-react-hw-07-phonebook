@@ -33,7 +33,7 @@ const ContactForm = () => {
 
     if (checkSameNumber) {
       const { name, number } = checkSameNumber;
-      alert(`This number already exists: "${name}: ${number}"`);
+      alert(`This number already exists: ${name}: ${number}`);
       return;
     }
 
